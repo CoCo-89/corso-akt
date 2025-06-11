@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="selPoligono">Scegli poligono</label>
+        <select id="selPoligono">
+            <option>Triangolo</option>
+            <option>Rettangolo</option>
+        </select>
+    </div>
+    <div>
+        <label for="txtBase">Inserisci base</label>
+        <input id='txtBase' type="text">
+    </div>
+    <div>
+        <label for="txtAltezza">Inserisci altezza</label>
+        <input id='txtAltezza' type="text">
+    </div>
+    <div><button onclick="calcolaArea()";>
+        Calcola area
+    </button></div>
+    <div id="risultato"></div>
+
+<script>
+    function calcolaArea() {
+    var base = document.getElementById('txtBase').value;
+    var altezza = document.getElementById('txtAltezza').value;
+    var poligono = document.getElementById('selPoligono').value;
+    var area = base * altezza;
+    if (poligono == 'Triangolo') {
+        area/=2;
+    }
+    document.getElementById('risultato').innerText = 'L\'area è ' + area;
+    }
+    
+</script>
+
+
+
+</body>
+</html>

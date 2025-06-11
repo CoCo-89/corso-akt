@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><label for="txtSecondi" type="text">Inserisci secondi</label>
+        <input id="txtSecondi" type="text"></body</div>
+    
+        <div><button onclick="iniziaContoAllaRovescia();">Conto alla rovescia</button></div>
+        <div id="conto"></div>
+        <div><img id="bomba" src="bomba1.webp" alt="immagine di una bomba"></div>
+
+    <script>
+        let secondi;
+        let id;
+
+        function iniziaContoAllaRovescia() {
+            secondi = document.getElementById('txtSecondi').value;
+            id = setInterval(decrementa, 1000);
+        }
+
+        function decrementa() {
+            secondi--;
+            conto.innerText = secondi;
+            if(secondi <= 0) {
+                secondi = 0;
+                clearInterval(id);
+                bomba.src = 'bomba2.jpg';
+                bomba.alt = 'Bomba esplosa';
+            }
+        }
+    </script>
+</body>
+
+</html>

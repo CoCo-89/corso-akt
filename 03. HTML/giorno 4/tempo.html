@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #risultato {
+            font-size: 48px;
+            text-align: center;
+            border: 3px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="risultato"></div>
+    <button onclick="startTempo();">Start</button>
+    <button onclick="stopTempo();">Stop</button>
+    <script>
+        
+        let i = -1;   
+        
+        function stopTempo() {
+            clearInterval(i);
+            i = -1;
+        }
+
+        function startTempo(){
+            if(i == -1) {
+                i = setInterval(mostraOra, 1000); //permette di ripetere funzione ogni intervallo di tempo specificato
+            }
+        }
+        
+        function mostraOra() { //ricorsione
+        let d = new Date(); //istanziare oggetto di tipo Date, parentesi sono il costruttore del metodo date, metodo costruttore permette di costruire un oggetto
+        let ore = correggiTempo(d.getHours());
+        let minuti = correggiTempo(d.getMinutes());
+        let secondi = correggiTempo(d.getSeconds());
+        let oraCompleta = ore + ':' + minuti + ':' + secondi;
+        risultato.innerText = oraCompleta;
+        }
+        //risultato.innerText = d.getFullYear();  //eredita l'anno in corso dalla classe date
+        function correggiTempo(t) {
+            if (t<10) {
+                t = '0' + t;
+            }
+            return t;
+        }
+    </script>
+</body>
+</html>

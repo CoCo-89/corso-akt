@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8"> <!-- tipo di carattere della pagina per tutte le lingue occidentali -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adatta le pagine ai dispositivi -->
+    <title>Document</title>
+</head>
+<body>
+    <input id="txtNome" type="text"> <!-- Identifica casella di testo -->
+    <button onclick="saluta();">Saluta</button> <!-- onclick è il contenuto Javascript scritto in "Vanilla Javascript" -->
+    <div></div>
+
+    <script>
+        function saluta() {
+            var casella = document.getElementById('txtNome');
+            var nome = casella.value; //value è ciò che scriviamo nella casella di testo
+            console.log('Casella: ' + typeof(casella));
+            console .log('Nome: ' + typeof(nome));
+            //alert('Ciao ' + nome);
+        }
+    </script> <!-- Stoppa funzioni HTML per integrare sintassi Javascript -->
+</body>
+</html>

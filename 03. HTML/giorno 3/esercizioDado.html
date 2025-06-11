@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label for="txtIndovina">Indovina il numero</label>
+        <input id="txtIndovina" type="text">
+    </div>
+    <div>
+        <button onclick="lanciadado();">
+            Gioca
+    </button></div>
+    <div id="risultato"></div>
+
+    <script>
+        function lanciadado(){
+            let indovina = document.getElementById('txtIndovina').value;
+            let numeroCasuale = Math.random();
+            numeroCasuale = numeroCasuale * 6;
+            numeroCasuale = Math.floor(numeroCasuale);
+            numeroCasuale++;
+            document.getElementById('risultato').innerText = 'E\' uscito il ' + numeroCasuale;
+            if(numeroCasuale == indovina){
+            document.getElementById('risultato').innerText = 'Hai vinto';
+            } else {
+                document.getElementById('risultato').innerText = 'Hai perso';
+            }
+
+        }
+    </script>
+</body>
+
+</html>

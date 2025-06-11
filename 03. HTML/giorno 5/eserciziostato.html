@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><label for="txtNome">Inserisci nome</label>
+        <input id="txtNome" type="text"></div>
+        <div id="risultato"></div>
+    <button onclick="trova()">Trova stato</button>
+        <script>
+            function trova() {
+                let nome = document.getElementById('txtNome').value;
+                let url = 'https://api.nationalize.io/?name=' + nome;
+                let promise = fetch(url);  //programmmazione asincrona
+                promise.then((response) => {
+                let jsonPromise = response.json();
+                jsonPromise.then((r) => {
+                    let messaggio = `Lo stato di ${r.name} è ${r.country[0].country_id} al ${r.country[0].probability * 100}%`;
+                    risultato.innerText = messaggio;
+                });
+                console.log('4. Dopo il then interno')
+            });
+            console.log('5. Dopo il then');
+        }
+        </script>
+</body>
+</html>

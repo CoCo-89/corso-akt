@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td {
+            border: solid 1px black
+        }
+    </style>
+</head>
+
+<body>
+    <table id="tabella">
+    </table>
+
+    <script>
+        class Papero { //le classi sono tutte public//stampino
+            nome;
+            anni;
+            macchina;
+            constructor(nome, anni, macchina) { //creazione costruttore parametrico in Javascript va fatto all'interno della classe
+                this.nome = nome;
+                this.anni = anni;
+                this.macchina = macchina;   //si può avere un solo constructor, non si può fare overload dei parametri
+            }
+        }
+
+        let paperino = new Papero();    //oggetto
+        paperino.nome = 'Paperino';
+        paperino.anni = 50;
+        paperino.macchina = '313';
+
+        let paperina = new Papero('Paperina', 48, '500');   //passaggio valori con costruttore parametrico
+        // paperina.nome = 'Paperina';
+        // paperina.anni = 48;
+        // paperina.macchina = '500';
+        //console.log('Il papero ' + paperino.nome + 'ha ' + paperino.anni + ' anni ')    //richiama il valore della variabile
+        console.log(`Il papero ${paperino.nome} ha ${paperino.anni} anni.`);    //string interpolation, metodo per abbreviare
+        console.log(`Il papero ${paperina.nome} ha ${paperina.anni} anni.`);    //string interpolation, metodo per abbreviare
+
+        let rigaPapero = '';    //primo metodo per creazione tabella senza utilizzo del for
+        let rigaPapero2 = '';
+        rigaPapero += `<tr><td>${paperino.nome}</td><td>${paperino.anni}</td><td>${paperino.macchina}</td></tr>`;
+        rigaPapero2 += `<tr><td>${paperina.nome}</td><td>${paperina.anni}</td><td>${paperina.macchina}</td></tr>`;
+        // let anagrafeP = '';  da ciclare anche le colonne con un for in
+        // for(i = 0; i <= 2; i++){
+        //     anagrafeP += '<td>';
+        // }
+        // anagrafeP += '<tr>';
+        tabella.innerHTML = rigaPapero + rigaPapero2;
+    </script>
+</body>
+
+</html>

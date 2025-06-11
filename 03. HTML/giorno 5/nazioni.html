@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="country.js"></script>
+</head>
+<body>
+
+
+    <ol id="elenco"></ol>
+
+    <script>
+        // let saluto = '<li>Ciao</li>'
+        // elenco.innerHTML = saluto;
+
+        trovaNazioni('Corrado').then((lista) => {
+            let risultato = '';
+            for (let elemento of lista) {
+                risultato  += '<li>' + elemento.getDescrizioneCountry() + '</li>';
+            }
+            document.getElementById('elenco').innerHTML = risultato;
+        });
+
+        async function trovaNazioni(nome) {
+            let url = 'https://api.nationalize.io/?name=' + nome;
+            let response = await fetch(url);    //chiamata del metodo fetch
+            let dati = await response.json();   //traduzione codice fetch
+            let nazioni = dati.country; //dati è un oggetto e country un array
+            console.log(dati)
+            let countries = [];
+            for(let nazione of nazioni) {
+                let country = new Country(nazione.country_id , nazione.probability);
+                countries.push(country);
+            }
+            return countries;
+        };
+        // let country = new Country('IT', '0.5');
+        // console.log(country.getDescrizioneCountry());
+    </script>
+</body>
+</html>

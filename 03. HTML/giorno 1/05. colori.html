@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: darkcyan;
+        }
+        #divino {
+            background-color: yellow;
+            font-size: 200%; 
+            width: 50%;
+        }
+        .margherita {
+            background-color: pink;
+        }
+        #secondino {
+            background-color: lightgreen;
+        }
+        .margherita {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divino">Primo div</div> <!-- id è univoco -->
+    <div id="secondino" class="margherita">Secondo div</div> <!-- class è multipla-->
+    <div>Terzo div</div>
+    <div class="margherita">Quarto div</div> <!-- vince sempre il secondo -->
+</body>
+
+</html>

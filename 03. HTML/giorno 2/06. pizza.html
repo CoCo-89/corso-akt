@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menù Pizzeria</title>
+    <style>
+        #immagineTitolo {
+            width: 400px;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px, solid
+        }
+
+        table {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pizzeria Da Zia Peppa</h1>
+    <div>Se voi magna quer che te piace, daje er tempo che se coce</div>
+    <div><img id="immagineTitolo"
+            src="https://it.ooni.com/cdn/shop/articles/Ooni_capricciosa_42.jpg?crop=center&height=800&v=1696425598&width=800">
+    </div>
+    <div>
+        <label for="txtCerca">Cerca Pizza</label>
+        <input id="txtCerca" type="text">
+        <button onclick="cercaPizza();">Cerca</button>
+    </div>
+    <div>
+        <a href="https://www.google.com" target="_blank">Clicca qui</a>
+    </div>
+    <table><!-- tabella -->
+        <tr>
+            <th>Nome</th>
+            <th>Prezzo</th>
+        </tr>
+        <tr><!-- riga -->
+            <td>Margherita</td><!-- cella -->
+            <td>€ 7.00</td><!-- cella -->
+        </tr>
+        <tr><!-- riga -->
+            <td>Marinara</td><!-- cella -->
+            <td>€ 6.00</td><!-- cella -->
+        </tr>
+        <tr><!-- riga -->
+            <td>Funghi</td><!-- cella -->
+            <td>€ 7.50</td><!-- cella -->
+        </tr>
+        <tr><!-- riga -->
+            <td>Capricciosa</td><!-- cella -->
+            <td>€ 9.50</td><!-- cella -->
+        </tr>
+        <tr><!-- riga -->
+            <td>Ortolana</td><!-- cella -->
+            <td>€ 11.00</td><!-- cella -->
+        </tr>
+    </table>
+    <label>Scegli la pizza:</label>
+    <select>
+        <option></option>
+        <option>Margherita</option>
+        <option>Marinara</option>
+        <option>Funghi</option>
+        <option>Capricciosa</option>
+        <option>Ortolana</option>
+    </select>
+    <ul>
+        <li>Nocciola</li>
+        <li>Pistaccio</li>
+        <li>Cocco</li>
+        <li>Cioccolato</li>
+    </ul>
+    <script>
+        function cercaPizza() {
+            var testoCerca = document.getElementById('txtCerca').value;
+            alert('La pizza cercata è ' + testoCerca)
+        }
+    </script>
+</body>
+
+</html>

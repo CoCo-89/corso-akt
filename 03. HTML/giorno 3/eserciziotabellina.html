@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cellaX {
+            background-color: white;
+            text-align: center;
+            color: black;
+        }
+        #celle {
+            background-color: rgb(40, 130, 194);
+            text-align: center;
+            color: white;
+        }
+
+        #col {
+            background-color: rgb(40, 130, 194);
+            text-align: center;
+            color: white;
+        }
+
+        td {
+            background-color: rgb(252, 252, 248);
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px, solid
+            
+        }
+
+        table {
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div><button onclick="riempi();">Riempi</button></div>
+    <table>
+        <tr>
+           <td id="cellaX">X</td>
+                <td id="celle">1</td>
+                <td id="celle">2</td>
+                <td id="celle">3</td>
+                <td id="celle">4</td>
+                <td id="celle">5</td>
+                <td id="celle">6</td>
+                <td id="celle">7</td>
+                <td id="celle">8</td>
+                <td id="celle">9</td>
+                <td id="celle">10</td>
+        </tr>
+        <tr>
+            <td id="col">1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">6</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">7</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">8</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="col">10</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        function riempi(){
+            for(riga = 1; riga <= 10; riga++) {
+                for(let col = 1; col <= 10; col++){
+                    document.innerText(riga*col);
+                }
+            }
+         }
+    </script>
+
+</body>
+
+</html>

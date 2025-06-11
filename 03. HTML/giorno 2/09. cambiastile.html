@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cambia stile</h1>
+    <p id="testo">Questo è un testo molto intelligente</p>
+    <button onclick="cambiaStile();">Cambia</button>
+
+    <script>
+        function cambiaStile() {
+            var elemento = document.getElementById('testo');
+            elemento.style.color = 'red';
+            elemento.style.fontSize = '32pt';
+            elemento.style.fontFamily = 'Verdana'; //proprietà che restituisce un oggetto
+        }
+    </script>
+</body>
+</html>

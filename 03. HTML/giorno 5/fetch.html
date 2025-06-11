@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><label for="txtNome">Inserisci un nome</label>
+        <input id="txtNome" type="text"></div>
+    <button onclick="trovaGenere();">Trova Genere</button>
+    <p id="risultato"></p>
+    <script>
+        function trovaGenere() {    //la funzione si deve collegare al sito prendendo i dati e far vedere il risulatato in html
+            let nominativo = document.getElementById('txtNome').value;
+            let url = 'https://api.genderize.io/?name=' + nominativo;
+            //console.log('1. Prima di fetch ');
+            let promise = fetch(url);  //programmmazione asincrona
+            promise.then((response) => {
+                //console.log('2. Dentro il then esterno');
+                let jsonPromise = response.json();
+                jsonPromise.then((r) => {
+                    let messaggio = `Il nome ${r.name} è ${r.gender == 'male' ? 'maschio' : 'femmina'} al ${r.probability * 100}%`;
+                    //console.log('3. Dentro il then interno');
+                    risultato.innerText = messaggio;
+                });
+                console.log('4. Dopo il then interno')
+            });
+            console.log('5. Dopo il then');
+        }
+    </script>
+</body>
+</html>

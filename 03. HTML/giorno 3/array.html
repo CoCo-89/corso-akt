@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="risultato"></p>
+    <script>
+        let gelati = ['Nocciola', 'Cocco', 'Fragola', 'Cioccolato'];
+        //document.getElementById('risultato').innerText = gelati[1];
+        //let gelato = 0;
+        for(let gelato in gelati) {
+            risultato.innerText = risultato.innerText + ' ' + gelato + ' ' + gelati[gelato];
+        }
+        //risultato.innerText = gelati[1];
+        //let i = 0;
+        // while (i< gelati.length) {   //ciclo while
+        //     console.log(gelati[i]);
+        //     i++;
+        // }
+        // for(let i = 0; i<gelati.length; i++) {   //ciclo for
+        //     console.log(gelati[i]);
+        // }
+        // for(let gelato of gelati) {  //forEach solo con valore
+        //     console.log(gelato);  
+        // }
+        // for(let gelato in gelati) {  //forEach con valore più indice
+        //     console.log(gelato + ' ' + gelati[gelato]);
+        // }
+        // gelati.forEach((gelato) =>  //forEach puro
+        //     console.log(gelato)
+        // );
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div><label for="txtTempo" type="text">Inserisci secondi</label>
+    <input id="txtTempo" type="text"></body</div>
+
+    <div><button onclick="timer();">Conto alla rovescia</button></div>
+    <div id="contoRov"></div>
+    <div><img id="bomba" src="bomba1.webp" alt="immagine di una bomba"></div>
+
+    <script>
+
+        let id;
+
+        function timer(){
+            i = document.getElementById('txtTempo').value;
+            setInterval(decrementa, 1000);
+            // if(tempo>0){
+            //     document.getElementById('boom').src = 'bomba1.png';
+            // } else if (tempo ==0){
+            //     document.getElementById('boom').src = 'bomba2.png';
+            // }
+        }
+        
+        function decrementa(){
+            i--;
+            contoRov.innerText = i;
+            // tempo = document.getElementById('txtTempo').value;
+            // if(tempo <0){
+            //     alert('Il numero deve essere maggiore di 0');
+            //     return;
+            // }
+            // if(tempo >0){
+            //     i = setInterval(timer, 1000);
+            // }
+        }
+    </script>
+</body>
+</html>

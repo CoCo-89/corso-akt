@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="cambiaTesto();">
+    <h1>Semaforo</h1>
+    <div id="risultato"></div>
+    <div><img id="imgSemaforo" src="Rosso.png" alt=""></div>
+    <div><button onclick="cambiaImmagine();">Cambia Immagine</button></div>
+    <script>
+        // var isRosso = true;
+        var posizione = 0;
+        function cambiaTesto() {
+            document.getElementById('risultato').innerText = 'Pippo';
+        }
+        function cambiaImmagine() {
+            // if(isRosso) {
+                // document.getElementById('imgSemaforo').src = 'Verde.png';
+                //isRosso = false;
+            // } else {
+                // document.getElementById('imgSemaforo').src = 'Rosso.png';
+                //isRosso = true;
+            if(posizione == 0) {
+                document.getElementById('imgSemaforo').src = 'Arancione.png';
+                posizione = 1;
+            } else if(posizione == 1) {
+                document.getElementById('imgSemaforo').src = 'Verde.png';
+                posizione = 2;
+            } else {
+                document.getElementById('imgSemaforo').src = 'Rosso.png';
+                posizione = 0;
+            }
+            }
+            // isRosso = !isRosso; //abbreviazione dei caratteri  
+    </script>
+</body>
+</html>
