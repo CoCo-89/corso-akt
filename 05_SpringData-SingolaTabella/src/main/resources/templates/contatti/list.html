@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Contatti</title>
+    <style>
+        /* Stili CSS di base per la lista */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .actions a:hover {
+            text-decoration: underline;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #367c39;
+        }
+        .message {
+            color: green;
+            font-weight: bold;
+        }
+        .error-message{
+            color:red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista Contatti</h1>
+        <div class="button-container">
+            <a href="/contatti/new" class="button">Aggiungi Nuovo Contatto</a>
+        </div>
+        <div th:if="${message}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}"></p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Data di Nascita</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="contatto : ${contatti}">
+                    <td th:text="${contatto.nome}"></td>
+                    <td th:text="${contatto.cognome}"></td>
+                    <td th:text="${contatto.tel}"></td>
+                    <td th:text="${contatto.mail}"></td>
+                    <td th:text="${#temporals.format(contatto.dataNascita, 'dd-MM-yyyy')}"></td>
+                    <td class="actions">
+                        <a th:href="@{/contatti/edit/{id}(id=${contatto.idContatto})}">Modifica</a>
+                        <a th:href="@{/contatti/delete/{id}(id=${contatto.idContatto})}" onclick="return confirm('Sei sicuro di voler eliminare questo contatto?');">Elimina</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

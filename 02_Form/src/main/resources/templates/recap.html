@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html 	lang="it"
+		xmlns:th="www.thymeleaf.org">
+		
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Visualizzazione dati raccolti</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+		
+	</head>
+
+	<body class="roboto-100">
+		<h3>Ciao, <span th:text="${utente.nome}"></span></h3>
+		<h3>Dati Utente:</h3>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Nome del Campo</th>
+					<th>Valore</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nome</td>
+					<td th:text="${utente.nome}"></td>
+				</tr>
+				<tr>
+					<td>Cognome</td>
+					<td th:text="${utente.cognome}"></td>
+				</tr>
+				<tr>
+					<td>Data di Nascita</td>
+					<td th:text="${#temporals.format(utente.dataNascita, 'dd/MM/yyyy')}"></td>
+				</tr>
+				<tr>
+					<td>Data e Ora di Registrazione</td>
+					<td th:text="${#temporals.format(utente.dataOraRegistrazione, 'dd/MM/yyyy HH:mm:ss')}"></td>
+				</tr>
+				<tr>
+					<td>Peso (kg)</td>
+					<td th:text="${#numbers.formatDecimal(utente.peso, 1, 'POINT', 2, 'COMMA')}"></td>
+				</tr>
+				<tr>
+					<td>Altezza (m)</td>
+					<td th:text="${#numbers.formatDecimal(utente.altezza, 1, 'POINT', 2, 'COMMA')}"></td>
+				</tr>
+				<tr>
+					<td>Automunito</td>
+					<td th:text="${utente.automunito ? 'Sì' : 'No'}"></td>
+				</tr>
+				<tr>
+					<td>Interessi</td>
+					<td>
+						<ul th:if="${not #lists.isEmpty(utente.listaInteressi)}">
+							<li th:each="interesse : ${utente.listaInteressi}"
+								th:text="${interesse.name()}"></li>
+						</ul> <span th:if="${#lists.isEmpty(utente.listaInteressi)}">Nessun
+							interesse selezionato</span>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	
+		<br>
+	    <a th:href="@{/form}">Torna al Form</a>
+		
+	</body>
+</html>

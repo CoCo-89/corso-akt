@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it"
+		xmlns:th="http//www.thymeleaf.org">	<!-- specifica struttura pagina come tag th -->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Page 1</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+	</head>
+
+	<body class="montserrat-200">
+	<h1>Page 1</h1>
+	<p>Ciao <span th:text="${nome}"></span>	</p>
+	<p>Ciao <span data-th-text="${nome}"></span>	</p>
+	
+	oppure:
+	<p th:text="'Benvenuto nella tua pagina, '+ ${nome}"></p>
+	
+	
+	
+	</body>
+</html>

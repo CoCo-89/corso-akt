@@ -1,0 +1,7 @@
+Registro di Spese Semplice:
+Creare un progetto per la gestione del registro delle spese di una persona.
+
+Form: Campi per inserire la descrizione della spesa, l'importo 
+		(con eventuale selezione della valuta) e una categoria (es. cibo, trasporti, svago).
+Tabella: Visualizza la data (potrebbe essere precompilata con la data corrente), 
+		la descrizione, l'importo e la categoria della spesa inserita.

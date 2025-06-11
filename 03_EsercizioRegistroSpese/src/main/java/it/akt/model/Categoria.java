@@ -1,0 +1,7 @@
+package it.akt.model;
+
+public enum Categoria {
+
+	ALIMENTARI, ABBIGLIAMENTO, CURA_PERSONALE, DIVERTIMENTO, STUDIO, HOBBY, SALUTE, FITENSS, TASSE, VACANZE
+	
+}

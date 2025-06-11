@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html 	lang="it"
+		xmlns:th="www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Form</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+	</head>
+
+	<body class="roboto-100">
+		<h1>Form inserimento dati</h1>
+		
+		<form	th:action="recap" th:method="POST" th:object="${utente}">
+			<div>
+				<label for="nome">Nome</label>
+				<input id="nome" type=text th:field="${utente.nome}">							
+			</div>
+			<div>
+				<label for="cgnm">Cognome</label>
+				<input id="cgnm" type=text th:field="*{cognome}">	<!-- * corrisponde a scrivere una specie di this.utente e quindi basta chiamare il nome del campo dell'oggetto dichiarato in th:object -->	 					
+			</div>
+			<div>
+				<label for="nascita">Data di nascita</label>
+				<input id="nascita" type="date" th:field="${utente.dataNascita}">							
+			</div>
+			<!-- Data e ora di registrazione conviene catturarle lato server nel controller -->
+			<div>
+				<label for="peso">Peso</label>
+				<input id="peso" type="number" step="0.01" th:field="${utente.peso}">							
+			</div>
+			<div>
+				<label for="alt">Altezza</label>
+				<input id="alt" type="number" step="0.01" th:field="${utente.altezza}">							
+			</div>
+			<div>
+				<label for="auto">Sei automunito?</label>
+				<input id="auto" type="checkbox" th:field="${utente.automunito}">							
+			</div>
+			
+			<!-- Qui la lista completa di interessi per popolare il menù della Select, 
+			passa come un oggetto separato dall'oggetto utente. Va quindi gestita in un   -->
+			<div>
+			    <label for="interessi">Interessi:</label>
+			    <!-- questo qui sotto cattura la lista di interessi selezionati nell'oggetto utente -->
+			    <select id="interessi" th:field="${utente.listaInteressi}" multiple="multiple">
+			        <!-- questo qui sotto invece è l'arrayInteressi, ovvero la lista completa degli interessi, creando un forEach sull'array -->
+			        <option th:each="interesse : ${arrayInteressi}" th:value="${interesse}" th:text="${interesse.name()}"></option>
+			    </select>
+			</div>
+			
+			<input type="submit" value="Invia">
+		
+		</form>
+		
+	</body>
+</html>
+
+<!-- nome;
+	cognome;
+	dataNascita;
+	dataOraRegistrazione;
+	peso;
+	altezza;
+	automunito;
+	listaInteressi
+ -->	

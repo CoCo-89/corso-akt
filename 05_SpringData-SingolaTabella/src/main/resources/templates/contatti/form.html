@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:if="${isEdit}">Modifica Contatto</title>
+    <title th:unless="${isEdit}">Aggiungi Nuovo Contatto</title>
+    <style>
+        /* Stili CSS di base per il form */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #367c39;
+        }
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .cancel-button:hover {
+            background-color: #d32f2f;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:if="${isEdit}">Modifica Contatto</h1>
+        <h1 th:unless="${isEdit}">Aggiungi Nuovo Contatto</h1>
+        
+        <!-- Questo th:action con operatore ternario chiama due indirizzi diversi a seconda che sia salvataggio di un nuovo elemento o aggiornamento di uno esistente -->
+        <form th:action="${isEdit} ? @{/contatti/update/{id}(id=${contatto.idContatto})} : @{/contatti/save}" th:object="${contatto}" method="post">
+            <input type="hidden" th:field="*{idContatto}" />
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" th:field="*{nome}" >
+                <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="error-message"></p>
+            </div>
+            <div>
+                <label for="cognome">Cognome:</label>
+                <input type="text" id="cognome" th:field="*{cognome}" >
+                <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="error-message"></p>
+            </div>
+            <div>
+                <label for="tel">Telefono:</label>
+                <input type="tel" id="tel" th:field="*{tel}" required="required">
+                <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="error-message"></p>
+            </div>
+            <div>
+                <label for="mail">Email:</label>
+                <input type="email" id="mail" th:field="*{mail}" >
+                <p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="error-message"></p>
+            </div>
+            <div>
+                <label for="dataNascita">Data di Nascita:</label>
+                <!-- Qui devo catturare la data con il classico name="" per evitare conflitti tra th:field e th:value -->
+                <!-- nel controller Post dovrò catturare separatamente il campo dataDiNascita usando HttpServletRequest -->
+                <input type="date" id="dataNascita" name="dataDiNascita" th:value="${#temporals.format(contatto.dataNascita, 'yyyy-MM-dd')}"  >
+                <p th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}" class="error-message"></p>
+            </div>
+            <button type="submit" th:if="${isEdit}">Aggiorna Contatto</button>
+            <button type="submit" th:unless="${isEdit}">Salva Contatto</button>
+            <a href="/contatti" class="cancel-button">Annulla</a>
+        </form>
+    </div>
+</body>
+</html>

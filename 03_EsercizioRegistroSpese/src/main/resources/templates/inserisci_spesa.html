@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Inserisci le spese</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+	</head>
+
+	<body class="ubuntu-light">
+		
+		<h3>Inserisci qui la tua ultima spesa</h3>
+		
+		<button type="button" th:attr="onclick='window.location.href=\'' + @{/lista_spese} + '\''">Lista</button> <!-- onclick="window.location.href='#'" -->
+		
+		<form th:action="insert" th:method="POST" th:object="${nuovaSpesa}">
+			<div class="form-input">
+				<label for="data">Data</label>
+				<input id="date" type="date" th:field=${nuovaSpesa.dataSpesa} >
+			</div>
+			<div class="form-input">
+				<label for="note">Descrizione</label>
+				<textarea id="note"  th:field=${nuovaSpesa.descrizione} 
+					rows="5" cols="50" placeholder="Scrivi qui una breve nota...">
+				</textarea>
+			</div>
+			<div class="form-input">
+				<label for="euro">Importo</label>
+				<input id="euro" type="number" step="0.01" th:field=${nuovaSpesa.importo}>€
+			</div>
+			<div class="form-input">
+				<label for="tipo">Categoria</label>
+				<select id="tipo" th:field="${nuovaSpesa.categoria}">
+					<option th:each="tipo : ${listaCategorie}" th:value="${tipo}" th:text="${tipo}"></option>
+				</select>
+			</div>
+			<input type="submit" value="Aggiungi">
+		</form>
+		
+		
+	</body>
+</html>

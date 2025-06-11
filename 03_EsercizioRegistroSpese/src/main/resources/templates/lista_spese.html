@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Spese</title>
+	
+	<link href="/stile.css" rel="stylesheet">
+	
+	</head>
+	
+	<body class="ubuntu-light">
+		<h3>Lista spese</h3>
+		<button type="button" th:attr="onclick='window.location.href=\'' + @{/index} + '\''">Inserisci una spesa</button> 
+
+		<div th:if="${!listaSpese.isEmpty()}">
+			<table>
+				<thead>
+					<tr>
+						<th>Data Spesa</th>
+						<th>Descrizione</th>
+						<th>Importo</th>
+						<th>Categoria</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="spesa : ${listaSpese}">
+						<td th:text="${#temporals.format(spesa.dataSpesa, 'dd/MM/yyyy')}"></td>
+						<td th:text="${spesa.descrizione}"></td>
+						<td th:text="${#numbers.formatDecimal(spesa.importo, 0, 'POINT', 2, 'COMMA')} + ' €'"></td>
+						<td th:text="${spesa.categoria}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div th:unless="${!listaSpese.isEmpty()}" class="lista-vuota">
+			<p>Nessuna spesa inserita.</p>
+		</div>
+	
+	
+	
+	</body>
+</html>

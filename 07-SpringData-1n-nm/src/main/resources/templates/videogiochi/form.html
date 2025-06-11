@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${videogioco.idVideogioco == null ? 'Nuovo Videogioco' : 'Modifica Videogioco'}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4" th:text="${videogioco.idVideogioco == null ? 'Aggiungi Nuovo Videogioco' : 'Modifica Videogioco'}"></h1>
+
+        <form th:action="@{/videogiochi/salva}" th:object="${videogioco}" method="post">
+            <input type="hidden" th:field="*{idVideogioco}">
+
+            <div class="mb-3">
+                <label for="titolo" class="form-label">Titolo</label>
+                <input type="text" class="form-control" id="titolo" th:field="*{titolo}" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="annoRilascio" class="form-label">Anno di Rilascio</label>
+                <input type="number" class="form-control" id="annoRilascio" th:field="*{annoRilascio}" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('annoRilascio')}" th:errors="*{annoRilascio}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="produttore" class="form-label">Produttore</label>
+                <select class="form-select" id="produttore" th:field="*{produttore}">
+                    <option value="">-- Seleziona un Produttore --</option>
+                    <option th:each="p : ${produttori}" th:value="${p.idProduttore}" th:text="${p.nomeProduttore}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sviluppatori</label>
+                <div th:each="s : ${sviluppatori}" class="form-check">
+                    <input class="form-check-input" type="checkbox" th:value="${s.idSviluppatore}" th:field="*{sviluppatori}">
+                    <label class="form-check-label" th:text="${s.nomeSviluppatore}"></label>
+                </div>
+                <div class="text-danger" th:if="${#fields.hasErrors('sviluppatori')}" th:errors="*{sviluppatori}"></div>
+            </div>
+
+            <button type="submit" class="btn btn-success me-2">Salva</button>
+            <a th:href="@{/videogiochi}" class="btn btn-secondary">Annulla e Torna all'Elenco</a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>

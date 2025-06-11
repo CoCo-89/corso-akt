@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html 	lang="it"
+	  	xmlns:th="www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dati</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<h1></h1>
+		
+		
+		<div>
+			<label for="username">Ciao </label>
+			<div th:text="${utenteEsercizio.username}"></div>  
+		</div>
+		<div>
+			<label>La tua password è: </label>
+			<div th:text="${utenteEsercizio.password}"></div> 
+		</div>
+		
+		<a th:href="@{/form_esercizio}">Torna al Form</a>
+		</form>
+	</body>
+</html>

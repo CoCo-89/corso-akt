@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html 	lang="it"
+	  	xmlns:th="www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Insert title here</title>
+		
+		<link href="/stile.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<h1>Autenticazione</h1>
+		
+		<form th:action="riassunto_esercizio" th:method="get" th:object="${utenteEsercizio}">
+		<div>
+			<label for="username">Username</label>
+			<input id="username" type="text" th:field="${utenteEsercizio.username}">  
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="${utenteEsercizio.password}"> 
+		</div>
+		
+		<input type="submit" value="Invia">
+		</form>
+		
+		<hr>
+		
+		<form th:action="riassunto_esercizio" th:method="post" th:object="${utenteEsercizio}">
+		<div>
+			<label for="username">Username</label>
+			<input id="username" type="text" th:field="${utenteEsercizio.username}">  
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input id="password" type="password" th:field="${utenteEsercizio.password}"> 
+		</div>
+		
+		<input type="submit" value="Invia">
+		</form>
+	</body>
+</html>
