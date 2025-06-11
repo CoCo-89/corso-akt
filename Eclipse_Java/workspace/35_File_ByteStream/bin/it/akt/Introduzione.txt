@@ -1,0 +1,34 @@
+	In Java esistono attualmente 3 diversi package che ci permettono di scrivere e leggere file:
+	java.io 	
+	java.nio	(single thread e non gestisce operazioni asincrone) nio= new intro output
+	java.nio.nio2 (Disponibile da Java7, stabile da Java 8, molto più complesso di Java.io)
+	
+	In Java.io abbiamo 3 tipi di stream (ovvero di flussi di dati, da e verso un file)
+	- byte stream = un singolo byte per volta
+	- character stream = un carattere per volta
+	- line stream (Buffered stream) = una riga per volta
+
+	Il ByteStream usa le classi di java.io.____: //flusso di Byte
+	Di base la lettura e scrittura di files 1 byte alla volta si fa attraverso due classi:
+		.FileInputStream  (legge byte da file  - input nel programma)
+		.FileOutputStream (scrive byte su file - output dal programma)
+		//importante fare stream.close per chiudere il file o blocco try with resources
+		
+		
+	Il Character Stream usa le classi:
+		.FileReader
+		.FileWriter
+		
+	Il Line Stream usa le classi:
+		.BufferedReader
+		.BufferedWriter (deprecato perché non supporta il multithreading)
+		.PrintWriter sostituisce il BufferedWriter	
+		
+	Queste classi normalmente si combinano con un oggetto di tipo File (java.io.File) che rappresenta appunto il nostro file e ci fornisce una serie di metodi.
+	
+	Il ByteStream è un sistema affidabile, ma molto lento.
+	E' comunque l'unico sistema che abbiamo per scrivere e leggere files che non siano di testo,
+	Quindi immagini, audio, video, ecc....
+
+	
+	

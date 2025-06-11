@@ -1,0 +1,80 @@
+// RIFERIMENTO: Java - Maggi ed. 2024 - pagg. 175-192
+
+ECCEZIONI IN JAVA
+==================
+
+Un'eccezione è un errore che si verifica durante l'esecuzione (runtime).
+Il programma parte e sembra funzionare, ma in esecuzione qualcosa lo manda in crash,
+impedendone la fine naturale.
+
+🔎 Tuttavia, un'eccezione non è un errore fatale: se viene gestita correttamente,
+il programma può continuare o terminare in modo controllato.
+
+Nel tempo, i programmatori hanno spesso abusato della gestione delle eccezioni,
+scrivendo codice difficile da leggere e mantenere.
+È quindi fondamentale usare `try-catch` solo quando necessario.
+
+---
+
+### 🌳 Gerarchia delle eccezioni
+
+Tutte le eccezioni derivano dalla classe base:
+
+- java.lang.Object
+  ↳ java.lang.Throwable
+     ↳ Error
+     ↳ Exception
+        ↳ RuntimeException
+
+📌 Riferimento visuale:  
+[Exception Hierarchy - immagine](https://www.protechtraining.com/static/bookshelf/java_fundamentals_tutorial/images/ExceptionClassHierarchy.png)
+
+
+
+### 💥 Error
+
+Rappresenta un problema **grave e irreversibile**, solitamente legato al sistema o alla JVM.
+
+Esempi:
+- OutOfMemoryError	(Memoria piena)
+- StackOverflowError
+- LinkageError	(Libreria saltata)
+
+⚠️ Non vanno mai gestiti con `try-catch`: se si verificano, il programma va rivisto.
+
+---
+
+### ⚠️ Exception e RuntimeException
+
+Le eccezioni sono **eventi imprevisti** che possono (e a volte devono) essere gestiti.
+
+#### ✅ Checked Exceptions (compilate)
+- Derivano direttamente da `Exception`, ma **non** da `RuntimeException`
+- Devono essere gestite con `try-catch` o dichiarate con `throws`
+- Esempi:
+  - IOException
+  - FileNotFoundException
+  - SQLException
+
+#### ⚠️ Unchecked Exceptions (runtime)
+- Derivano da `RuntimeException`
+- Non sono obbligatorie da gestire, ma può essere opportuno farlo
+- Esempi:
+  - NullPointerException
+  - IllegalArgumentException
+  - NumberFormatException
+  - ArithmeticException
+  - ArrayIndexOutOfBoundsException
+
+---
+
+### 🔄 Blocchi `try`, `catch`, `finally`
+
+
+try {
+    int result = 10 / 0; // genera ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Errore: divisione per zero.");
+} finally {
+    System.out.println("Questo blocco viene eseguito sempre.");
+}

@@ -1,0 +1,63 @@
+// RIFERIMENTO: Java - Maggi ed. 2024 - pagg. 155-158
+
+CLASSI ASTRATTE
+
+Modificatori di comportamento (behavior modifiers):
+- abstract (esatto opposto di finale, si applica a classi e metodi, solo firma metodo)
+- static
+- final
+- strictfp (obsoleto o raramente usato)
+
+Oltre a static e final, già visti, un ulteriore modificatore di comportamento è **abstract**.
+
+Può capitare di dover generalizzare il concetto espresso da una o più classi.  
+Ad esempio, se ho una **macchina**, un **aereo**, una **moto**, potrei volerli accomunare come **veicoli**.
+
+Questa non è una categoria concreta, ma un concetto astratto, che non rappresenta oggetti specifici.  
+Da qui nasce l'esigenza di introdurre il concetto di **classe astratta**.
+
+Poiché non esistono oggetti di tipo generico "veicolo", ma solo oggetti **che rientrano** in questa categoria,  
+una **classe astratta non può essere istanziata**, ma **solo ereditata**.
+
+Per lo stesso motivo, non avrebbe senso implementare direttamente nella classe `Veicolo` un metodo come `accelera()`,  
+perché ogni veicolo accelera in modo diverso.  
+Posso però **dichiarare** che ogni veicolo *dovrà* avere un comportamento di accelerazione,  
+senza specificare *come*.  
+Quindi definirò un metodo **astratto**, cioè **senza corpo**, che sarà implementato dalle classi figlie.
+
+Sarà pertanto compito delle sottoclassi — ad esempio `Auto`, `Moto` o `Aereo` —  
+**fornire l'implementazione concreta** del metodo `accelera()`, facendo **override** del metodo astratto.
+
+Quindi:
+- Il metodo `accelera()` **non avrà un corpo nella classe astratta**.
+- Sarà dichiarato `abstract`.
+- Le sottoclassi saranno **obbligate a implementarlo**.
+
+---
+
+### REGOLE
+- Quando una classe contiene almeno un metodo `abstract`, **deve essere dichiarata anch'essa `abstract`**.
+- È possibile dichiarare `abstract` anche una classe **che non contiene** metodi astratti (per impedire l’istanza diretta).
+- **I campi (variabili d’istanza)** non possono essere dichiarati `abstract`: questo modificatore si applica **solo a classi e metodi**.
+- Una classe astratta **non può essere istanziata** direttamente.
+- Una sottoclasse che estende una classe astratta **deve implementare tutti i metodi astratti ereditati**,  
+  **altrimenti diventa anch'essa astratta**.
+
+---
+
+### DEFINIZIONE DI CLASSE ASTRATTA
+Una classe astratta rappresenta un **contratto** che il programmatore stipula con il software,  
+per stabilire **quali metodi devono essere implementati** da tutte le classi che rappresentano un particolare concetto astratto.
+
+---
+
+Il modificatore `abstract` è **incompatibile** con `final`:
+- una classe `final` **non può essere estesa**;
+- una classe `abstract` **può solo essere estesa**.
+
+Una classe astratta può **contenere attributi**, **costruttori**, e **metodi concreti** (getter, setter, ecc.),  
+oltre a metodi astratti.
+
+---
+
+Iniziamo ora a creare una classe astratta, ad esempio `Veicolo.java`.

@@ -1,0 +1,55 @@
+//RIFERIMENTO: Java - Maggi ed 2024 - pagg.  158-166
+
+	
+	INTERFACCE: sono un tipo particolare di classe astratta
+		
+	Poiché in Java non è prevista ereditarietà multipla , in Java abbiamo il problema 
+	che occupato quello slot, non possiamo far ereditare altro alla classe.
+	Le interfacce correggono parzialmente questo problema, senza però incorrere nei 
+	problemi causati dall'ereditarietà multipla tra classi.
+	
+
+	LE INTERFACCE
+	Sono un caso particolare di classi astratte, che ci permette, tra altri vantaggi, 
+	quello di aggirare il blocco all'ereditarietà multipla.
+	
+	E' prevista l'iplementazione multipla sia tra interfacce che verso altre classi.
+	
+DEFINIZIONE:
+	Un'interfaccia è una classe astratta particolare, che può definire SOLO 
+		- campi:	public final static
+		- metodi:	public abstract (public abstract si può lasciare sottointeso)
+		NB: finchè non si ha domestichezza con questo strumento, è consigliato scriverlo sempre
+	non può avere costruttori o altri campi né metodi.
+	
+	Un'interfaccia definisce solo i metodi senza implementarli!
+	
+FUNZIONAMENTO:
+	Una classe implementa una o più interfacce (implements)	Eredita
+	Un'interfaccia estende una o più interfacce	(extends)	Eredita
+
+	• NOMI: Normalmente i nomi delle interfacce sono avverbi e rappresentano la capacità di fare 
+	qualcosa che una classe acquisisce:  runnuable, closeable, autoCloseable, ... 
+	
+	Nelle ultime versioni di Java (dalla 8 in poi) è stato concesso di aggiungere anche 
+	metodi static e di default (ATTENZIONE: in questo caso "default" va esplicitato/scritta).
+
+	Creo un'interfaccia come creo una classe ma uso crea interface
+	
+	Quando una classe implementa un'interfaccia, l'interfaccia diventa di fatto, 
+	superclasse della classe che la implementa
+	
+	
+	Supponiamo di voler definire il concetto di Veicolo usando un'intefaccia invece 
+	che una classe astratta:
+	
+	Invece di fare nuova->classe ho a disposiizione il menù nuova->interfaccia
+
+
+ACCENNO: Le interfacce sono importantissime perché sono la base per la creazione
+	di interfacce funzionali, che ci portano a metodi anonimi e alle espressioni Lambda!
+	Nb: (Arrow Function) sono un modo di cambiare il tipo di scrittura e approccio alla programmazione
+	Sono uno strumento molto potente che si sta diffondendo negli ultimi anni,
+	ma sono un pò difficili da imparare e assimilarle. Bisogna piano piano entrare nell'ottica
+	di utilizzare questo strumento.
+	Le vedremo tra poco...

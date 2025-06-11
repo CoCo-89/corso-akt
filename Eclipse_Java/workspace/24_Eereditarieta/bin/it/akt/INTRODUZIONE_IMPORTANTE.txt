@@ -1,0 +1,60 @@
+	//RIFERIMENTO: Java - Maggi ed 2024 - pagg. 119-129
+	
+	REGOLE BASE EREDITARIETA'
+	
+	L'EREDITARIETA' AVVIENE TRA CLASSI
+	
+	1. 	In Java non esiste ereditarietà multipla (orizzontale) Es= studente e docente non possono fare entrambi i tutor eretitando da Persona.
+	2. 	Ogni classe Java eredita implicitamente la classe Object. (Unico canale che può essere eridatato da più classi) 
+	3. 	Oltre alla classe Object, una classe Java, può ereditare SOLAMENTE un'altra classe
+	4. 	Vengono ereditati solamente i campi il cui modificatore di visibilità 
+		ne consente l'accesso e quindi l'eretitabilità
+				public
+				protected
+				default solo alla condizione che la classe che eredita e quella ereditata, 
+					siano nello stesso package
+				NON vengono ereditati i campi private.
+				
+	5. 	NON vengono ereditati i membri di una classe, ovvero tutto ciò che appartiene 
+		alla classe e non all'oggetto:
+				Costruttori
+				Costruttori statici
+				campi statici
+				metodi statici
+				ecc...
+				
+	6. 	In Java esiste comunque l'ereditarietà multipla verticale:
+				Persona
+				Studente extends Persona
+				StudenteInformatica extends Studente  (StudenteInformatica eredita 
+					implicitamente anche campi e metodi di persona)
+					
+	7.	NON vengono ereditate le classi marcate "final" 			
+
+OBIETTIVI:			
+	L'ereditarietà si prefigge di ridurre la scrittura di codice ridondante per 
+	ridurre tempi di codifica e rischio di errori, permettendo di riutilizzare 
+	campi e metodi di una classe già codificata.
+	
+	
+CONDIZIONI PER EREDITABILITA':	
+	Però, perché ci sia ereditarietà, è indispensabile che la classe derivata, 
+	risponda, nei confronti della superclasse, alla domanda "è un/a...." in modo affermativo.
+				
+				Capra può ereditare da 'Mammifero' solo se la risposta a:
+					"una Capra è sempre un Mammifero?" è affermativa
+					
+				Ad esempio una capra non potrà ereditare da 'Invertebrato' o da 'Pesce'
+				
+	Questo anche perché l'ereditarietà crea anche una situazione di compatibilità 
+	tra Tipi di Dato.
+	
+	Anche perché potrei decidere di istanziare una Capra come Mammifero.
+	Quindi devo avere una compatibilità assoluta del 100%
+	
+	
+	Vediamo qualche esempio di codice...
+	
+	Partiamo con creare la classe Persona e poi Studente che eredita da Persona
+	(vedi codice)
+	

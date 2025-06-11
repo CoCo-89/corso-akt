@@ -1,0 +1,98 @@
+Cos'è Throwable?
+	
+	Throwable è la classe radice della gerarchia delle eccezioni in Java. Rappresenta una 
+	condizione di errore che si verifica durante l'esecuzione di un programma. 
+	Le eccezioni sono oggetti che vengono utilizzati per segnalare errori e problemi inaspettati.
+	
+Ricapitoliamo le caratteristiche principali di Throwable che abbiamo già visto:
+	
+	• Gerarchia delle eccezioni: Throwable è la superclasse di due classi principali: 
+		Error e Exception.
+		- Error rappresenta errori gravi che generalmente indicano problemi nel sistema o 
+			nel runtime e non possono essere recuperati dal programmatore.
+		- Exception rappresenta errori generici che si verificano durante l'esecuzione 
+			del programma e che il programmatore può gestire.
+	
+	• Informazioni sull'eccezione: Ogni oggetto Throwable contiene informazioni sull'eccezione, 
+		come il messaggio di errore, la causa dell'errore e lo stack trace (traccia dello stack 
+		di chiamate).
+	
+	• Lancio di eccezioni: Le eccezioni vengono "lanciate" dal codice utilizzando la parola 
+		chiave throw. Quando un metodo lancia un'eccezione, il flusso di esecuzione viene 
+		interrotto e il controllo viene passato al blocco catch più vicino nel codice chiamante.
+	
+	• Gestione delle eccezioni: I blocchi try-catch vengono utilizzati per gestire le eccezioni. 
+		Un blocco try racchiude il codice che potrebbe generare un'eccezione, mentre uno o più 
+		blocchi catch specificano come gestire le diverse eccezioni che potrebbero verificarsi.
+		
+		
+Clausola THROWS in Java: Funzionamento ed Effetti sul Codice
+	La clausola throws in Java viene utilizzata per dichiarare le eccezioni che un metodo 
+	può generare durante la sua esecuzione.
+	
+	• Esempio di sintassi:
+	public void apriFile(String nomeFile) throws FileNotFoundException, IOException {
+		// Codice per aprire il file
+	}
+		
+	• Dichiarazione: La clausola throws viene inserita nell'intestazione del metodo, dopo 
+		la lista dei parametri di ritorno e prima della definizione del corpo del metodo.
+		
+	• Effetti sul codice: La clausola throws obbliga il metodo chiamante a gestire le 
+	eccezioni elencate. Se il metodo chiamante non gestisce tali eccezioni, il compilatore 
+	Java segnalerà un errore.	
+		
+	• Casi d'uso:
+		- La clausola throws è utile quando un metodo può generare diverse eccezioni 
+			correlate tra loro.
+		- È consigliabile utilizzare la clausola throws per le eccezioni che il metodo 
+			chiamante può effettivamente gestire.
+		- Evitare di utilizzare la clausola throws per eccezioni generiche come Exception, 
+			a meno che il metodo chiamante non sia in grado di gestire qualsiasi tipo di 
+			eccezione.	
+		- È possibile utilizzare un'istruzione throws all'interno di un blocco try per 
+			lanciare un'eccezione manualmente.
+		
+	Esistono delle annotazioni in Java che ci permettono di migliorare la gestione delle
+	eccezioni: @Throws e @ExceptionHandler 
+	
+@Throws
+	
+	• Dichiarazione: Viene utilizzata nella firma del metodo per dichiarare le eccezioni 
+		che il metodo può potenzialmente lanciare durante la sua esecuzione.
+	• Funzione:
+		- Informa il compilatore e gli sviluppatori sulle eccezioni che un metodo potrebbe generare.
+		- Obbliga il metodo chiamante a gestire o propagare tali eccezioni.
+	
+	• Esempio:
+	
+	 	public void apriFile(@Throws(FileNotFoundException.class) String nomeFile) throws IOException {
+		  // Codice per aprire il file
+		}
+
+
+@ExceptionHandler
+	
+	• Posizionamento: Viene utilizzata a livello di metodo in una classe per definire un metodo 
+		di gestione delle eccezioni.
+	• Funzione:
+		- Intercetta le eccezioni specificate come argomento dell'annotazione.
+		- Fornisce un modo personalizzato per gestire tali eccezioni all'interno della classe.
+	
+	• Esempio:
+
+		public class FileService {
+		
+			//Questo personalizza la gestione dell'eccezione
+			@ExceptionHandler(FileNotFoundException.class)
+			public String handleFileNotFound(FileNotFoundException e) {
+		 		return "File non trovato: " + e.getMessage();
+		  	}
+		
+		  	public void apriFile(String nomeFile) throws FileNotFoundException, IOException {
+		    	// Codice per aprire il file
+		  	}
+		}
+			
+			
+		

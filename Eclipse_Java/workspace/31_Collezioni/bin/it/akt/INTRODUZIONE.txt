@@ -1,0 +1,86 @@
+JAVA COLLECTION FRAMEWORK
+E' la vera eccellenza di Java. 
+
+Che cosa è un Framework e in cosa differisce da un API (Application Program Interface)?
+•	Framework: 	Una struttura software che fornisce una base predefinita per la costruzione di applicazioni.
+•	API: 		Un'interfaccia che consente a due applicazioni di comunicare tra loro.
+
+La differenza principale tra API e framework è il loro scopo. Le API sono progettate per la 
+comunicazione tra applicazioni, mentre i framework sono progettati per la costruzione di applicazioni. 
+In altre parole, le API forniscono un modo per le applicazioni di interagire tra loro, mentre i 
+framework forniscono una base per la creazione di nuove applicazioni.
+
+Altre differenze includono:
+	• Complessità: Le API sono generalmente più semplici e mirate rispetto ai framework.
+	• Flessibilità: I framework offrono maggiore flessibilità e controllo rispetto alle API.
+	• Riutilizzabilità: Le API possono essere riutilizzate in diverse applicazioni, mentre i framework 
+		sono generalmente progettati per un tipo specifico di applicazione.
+	
+Tutte le collezioni derivano da interfacce e classi presenti in java.util.	
+	
+Il Java Collection Framework è composto in modo particolare:
+	-	tutte le classi, classi astratte e interfacce che lo compongono sono di 
+		tipo Generico, Questo assicura l'omogenetià delle collezioni, ma anche 
+		di poterne creare di qualsiasi tipo
+	-	molte (ma non tutte) sono thread safe, ovvero non danno problemi in caso di multithreading
+	-	sono tutte collezioni mutabili, ovvero possiamo aggiungere e rimuovere 
+		dinamicamente dati (a parte ArrayList fino a Java7)
+	-	tutte le collezioni sono accomunate dal fatto di derivare dall'interfaccia 
+		COLLECTION (Tranne Map)
+		
+	• 	Esiste anche una classe di utility che si chiama Collections che 
+		fornisce metodi particolari
+	
+-------------------------				
+JAVA COLLECTION FRAMEWORK		
+-------------------------				
+(I) Collection<E> 
+(I)	├--	Set<E>
+(C)	│	│	├--	HashSet<E>
+(C)	│	│	└--	LinkedHashSet<E>
+(I)	│	└--	SortedSet<E>
+(C)	│		└--	TreeSet<E>
+	│
+(I)	├--	List<E>
+(C)	│		├--	ArrayList<E> 	Un'implementazione basata su array, che offre un accesso casuale agli elementi molto efficiente e buone prestazioni
+(C)	│		├--	CopyOnWriteArrayList<E> 	Implementazione thread-safe di List
+(C)	│		└--	LinkedList<E> 	Implementata come lista concatenata di nodi, con accesso casuale agli elementi e non supporta gli indici
+(C)	│		└--	Vector<E> 		Un'implementazione sincronizzata di ArrayList, progettata per l'utilizzo in ambienti multithread
+(C)	│		└--	Stack<E>		Un tipo speciale di List che segue la regola LIFO (Last In, First Out), simile a una pila
+	│
+(I)	└--	Queue<E>							Modello FIFO (First-In, First-Out)
+(I)		├── java.util.Deque<E>				(Double-Ended Queue: può comportarsi come Queue (FIFO) oppure Stack (LIFO))
+(C)    	│	├── java.util.ArrayDeque<E> 
+(C)    	│	└── java.util.LinkedList<E> 
+    	│
+(C)	   	├── java.util.PriorityQueue<E> 		(Gli elementi sono ordinati secondo una priorità naturale o un Comparator)
+       	│  	
+(I)	    └── java.util.concurrent.BlockingQueue<E> 	(Supporta operazioni che bloccano l’inserimento o l’estrazione in caso di coda piena o vuota - Usata in contesti concurrent)
+(C)	        ├── java.util.concurrent.ArrayBlockingQueue<E> 
+(C)	        ├── java.util.concurrent.LinkedBlockingQueue<E> 
+(C)	        ├── java.util.concurrent.PriorityBlockingQueue<E> 
+(C)	        ├── java.util.concurrent.SynchronousQueue<E> 
+(C)	        ├── java.util.concurrent.DelayQueue<E> 
+(C)	        └── java.util.concurrent.LinkedTransferQueue<E> 			
+
+
+
+
+(I)	Map<K, V>
+(C)		│	├--	HashMap<K, V>
+(C)		│	└--	LinkedHashMap<K, V>
+		│
+(I)		└--	SortedMap<K, V>
+(C)		 	└--	TreeMap<K, V>
+			
+(C)	Collections
+
+
+
+
+
+
+
+
+
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/doc-files/coll-overview.html

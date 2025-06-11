@@ -1,0 +1,91 @@
+//RIFERIMENTO: Java - Maggi ed 2024 - pagg. 376-379
+
+
+SERIALIZZAZIONE
+
+	
+	In Java, la serializzazione è il processo di conversione di un oggetto Java in un flusso 
+	di byte che può essere archiviato o trasmesso. Questo flusso di byte può poi essere 
+	deserializzato per ricostruire l'oggetto originale.
+	
+	La serializzazione è utile in diverse situazioni:
+
+	• Salvataggio di oggetti su disco: consente di salvare lo stato di un oggetto in un file, 
+		in modo che possa essere caricato e utilizzato in un secondo momento.
+	• Trasmissione di oggetti su rete: permette di inviare oggetti tra diverse applicazioni 
+		o computer attraverso una rete.
+
+Come funziona:
+	• La classe che si desidera serializzare deve essere marcata con l'annotazione @Serializable
+		oppure implementando l'interfaccia Serializable da java.io.Serializable
+		Tale interfaccia non contiene metodi ma serve solo a distinguere ciò che è serializzabile 
+		da ciò che non lo è. Sono serializzabili tutte le classi di dati.
+		Se non vogliamo serializzare un campo, possiamo marcarlo col modificatore di 
+		comportamento "transient". Questo esclude il campo dal flusso di dati.
+	• Scrittura dell'oggetto in un flusso di byte: Per serializzare un oggetto, viene utilizzato 
+		un oggetto ObjectOutputStream. 
+	• Lettura dell'oggetto da un flusso di byte: Per deserializzare un oggetto, viene utilizzato 
+		un oggetto ObjectInputStream	
+		
+		
+La serializzazione in Java può essere utilizzata con i database per diversi scopi, tra cui la 
+persistenza degli oggetti e la trasmissione di dati complessi. 		
+
+
+Come viene usata con i database:
+--------------------------------
+	• Persistenza degli oggetti: La serializzazione permette di salvare lo stato di un oggetto in un 
+		database come un BLOB (Binary Large Object). Questo è utile quando si desidera memorizzare 
+		oggetti complessi che non possono essere facilmente rappresentati come tabelle relazionali.
+		
+	• Caching: Gli oggetti serializzati possono essere memorizzati in cache per migliorare le 
+		prestazioni delle applicazioni, riducendo il tempo di accesso ai dati frequentemente utilizzati.
+		
+	• Trasmissione di dati: In applicazioni distribuite, gli oggetti serializzati possono essere 
+		trasmessi tra client e server attraverso una rete e poi memorizzati in un database.
+	
+Su quali classi va implementata:
+--------------------------------
+Per rendere una classe serializzabile, è necessario implementare l’interfaccia Serializable. 
+Ecco un esempio di una classe che può essere serializzata e memorizzata in un database:
+
+		import java.io.Serializable;
+
+		public class Persona implements Serializable {
+			private static final long serialVersionUID = 1L;
+			private String nome;
+			private int età;
+
+			// Costruttori, getter e setter
+		}
+
+
+
+Come agisce:
+------------
+	• Serializzazione: Quando un oggetto viene serializzato, viene convertito in un flusso di byte. 
+		Questo flusso può essere salvato in un database come un BLOB.
+		
+			Persona persona = new Persona("Mario", 30);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+			oos.writeObject(persona);
+			byte[] personaBytes = bos.toByteArray();
+			// Salvare personaBytes nel database come BLOB
+		
+
+	• Deserializzazione: Quando si recupera il BLOB dal database, il flusso di byte può essere 
+		convertito nuovamente in un oggetto.
+
+			byte[] personaBytes = // Recuperare il BLOB dal database
+			ByteArrayInputStream bis = new ByteArrayInputStream(personaBytes);
+			ObjectInputStream ois = new ObjectInputStream(bis);
+			Persona persona = (Persona) ois.readObject();
+
+
+
+
+
+
+
+

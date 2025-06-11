@@ -1,0 +1,124 @@
+
+PROGRAMMAZIONE AD OGGETTI (OOP) - CONCETTI BASE
+
+Che cosa è una classe?
+	DEFINIZIONE DI CLASSE:
+		E' il prototipo generale ed astratto di un oggetto osservabile nella realtà.
+		Inoltre è il modo che il programmatore ha per definire dei tipi 
+		di dato derivati diversi da quelli built-in.
+		Ci permette di recuperare i blocchi di codice messi in archivio o da parte dall'utente
+		Ogni blocco dovrebbe avere una certa autonomia per ogni membro del team
+		
+		(Al giorno d'oggi si utilizzano molto i "Microservizi": piccoli software su varie piattaforme che dialogano ognuno col proprio database
+		Una volta online i microservizi basta metterli su un'altra piattaforma per avere online lo stesso sistema in poco tempo
+		
+		
+	Una classe non deve descrivere un oggetto in particolare, ma descrivere 
+	in generale il concetto rappresentato da quell'oggetto, rappresenterà: 
+		tutte le Persona
+		tutte le Automobile
+		tutti gli Studente
+		ecc...
+		
+	I nomi delle classi iniziano con la Maiuscola e sono sempre al singolare
+	
+	DEFINIZIONE DI OGGETTO:
+	L'oggetto è la concretizzazione di una classe, comunemente definita ISTANZA.
+	
+	Quando creo l'oggetto sto di fatto riservando memoria per andare a gestire i dati 
+	relativi all'oggetto concreto che andremo a manipolare nel software. Lo sto istanziando!
+	
+	Gli oggetti sono "stateful" ovvero in grado di ricordare il loro stato. 
+	Quindi quando chiamo un metodo che modifica lo stato dell'oggetto, l'oggetto 
+	sarà in grado di ricordare la modifica ricevuta.
+	Se ho un oggetto persona e chiamo il metodo dormi, questo cambierà lo stato dell'oggetto.
+	
+	
+	
+OBIETTIVI E BENEFICI DELLA PROGRAMMAZIONE AD OGGETTI
+
+	•	Organizzare modulare del codice: L'OOP favorisce la suddivisione del codice 
+		in moduli ben definiti e riutilizzabili, migliorando la leggibilità, 
+		la manutenibilità e l'estendibilità del software.
+	
+	•	Promuovere il riutilizzo del codice: L'OOP incoraggia il riutilizzo del codice 
+		attraverso l'ereditarietà e il polimorfismo, riducendo il tempo di sviluppo e 
+		di debugging e migliorando la qualità del software.
+	
+	•	Simulare il mondo reale: gli oggetti rappresentano entità concrete e interagiscono 
+		tra loro.
+	
+Benefici principali dell'OOP:
+
+	•	manutenibilità: Il codice modulare e ben organizzato dell'OOP è più facile da 
+			comprendere, modificare e aggiornare, riducendo i costi di manutenzione.
+	•	riutilizzabilità: I componenti software OOP riutilizzabili, come classi e oggetti,
+			accelerano lo sviluppo di nuove applicazioni e riducono la duplicazione di codice.
+	•	robustezza: L'incapsulamento dei dati e la gestione degli errori all'interno degli 
+			oggetti OOP migliorano la robustezza del software e riducono la propagazione 
+			degli errori.
+	•	flessibilità: L'ereditarietà e il polimorfismo dell'OOP permettono di estendere 
+			e adattare facilmente il software a nuove esigenze.
+	•	scalabilità: L'architettura modulare dell'OOP facilita la scalabilità del software 
+			per supportare sistemi più grandi e complessi.	
+	
+	
+COME FUNZIONA LA PROGRAMMAZIONE AD OGGETTI?	
+	
+	Ad esempio se descrivo questa scrivania, devo astrarre il concetto di Scrivania, 
+	e rendere questa classe riutilizzabile, modificabile e facilmente leggibile.
+
+	Inoltre se la classe è sviluppata bene, facilita il debugging.
+	La divisione in classi facilita anche la suddivisione del lavoro in team.
+	
+	Le classi si compongono di diversi membri:
+	- campi 	(es. colore, altezza, materiale)
+	- metodi 	(es. regolaAltezza(int altezza), apriCassetto(int numeroCassetto), get e set) 
+	
+	DEFINIZIONE DI CAMPO: 
+		i campi sono delle variabili di tipo primitivo o derivato che 
+		mi permettono di descrivere le caratteristiche dell'oggetto
+	
+	DEFINIZIONE DI METODO: 
+		i metodi rappresentano il comportamento o le azioni che l'oggetto 
+		può compiere. I metodi sono, di fatto, delle funzioni definite nelle classi,
+		che possiamo richiamare invocandone la firma.
+	
+	Una classe Scrivania ne descriverà, tramite i campi
+		colore, materiale, altezza, numero di zampe, ecc...
+		
+	Ma sarà il singolo oggetto a vedere i campi valorizzati e ad acquisire pertanto una
+	propria identità.	
+		
+	Tramite i metodi, definirà azioni e comportamenti dell'oggetto generico
+		si alza, si abbassa, invecchia, si rovina, ecc...	Gli oggetti possono accedere 
+		a campi e metodi solo se il relativo 
+		modificatore di visibilità dei campi/metodi lo consente.
+	
+	
+MODIFICATORI DI VISIBILITA' IN JAVA:
+	
+	• MODIFICATORI PER CAMPI E METODI:
+		public
+		protected
+			(NON SI SCRIVE NULLA: viene chiamato default o package-private)
+		private
+
+	Quando un campo o medoto è public, l'oggetto generato dalla classe vi può accedere.
+	Quando è private no.
+	Per gli altri modificatori affronteremo affrotneremo il problema a breve.
+	
+	Iniziamo a creare una classe.
+	
+	Intanto ogni classe dovrebbe avere il suo file. 
+	Se la classe è public sono obbligato!
+	Il nome della classe public e il nome del file che la contiene DEVONO coincidere.
+	
+	• MODIFICATORI PER CLASSI - accenno a Incapsulamento
+		
+		public
+			(default/package-private)
+	
+	Ma cosa vuol dire che la classe è public? 
+	Le classi possono essere public o default 
+	Questo ne definisce la visibilità rispetto ad altre classi, in base al package di appartenenza
